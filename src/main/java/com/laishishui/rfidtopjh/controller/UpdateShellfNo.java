@@ -24,11 +24,12 @@ public class UpdateShellfNo {
     @Autowired
     private ShellfNoService shellfNoService;
 
-    @Scheduled(cron="")
+    /**
+     * 每天晚上23点定时更新最近两天的排架号
+     */
+    @Scheduled(cron="0 0 23 * * ?")
     private void autoUpdateShellNo(){
-        shellfNoService.autoUpdate(null,null);
+        shellfNoService.autoUpdate();
     }
-
-
 
 }

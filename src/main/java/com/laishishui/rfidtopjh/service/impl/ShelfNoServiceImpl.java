@@ -72,7 +72,7 @@ public class ShelfNoServiceImpl implements ShellfNoService {
         // 发起请求
         corePost(list);
         log.info("========更新排架号结束=========="+DateUtil.dateToStr(new Date(),DateUtil.DEFAULT_FORMAT));
-        return null;
+        return ServerResponse.createBySuccessMessage("任务已启动，请查看日志校验");
     }
 
     /**
@@ -107,7 +107,7 @@ public class ShelfNoServiceImpl implements ShellfNoService {
         List<ShelfNoDTO> list = new ArrayList<>();
         list.add(dto);
         corePost(list);
-        return null;
+        return ServerResponse.createBySuccessMessage("请查看opac是否修改");
     }
 
     //  从数据库 获取 最近两天排架号信息
