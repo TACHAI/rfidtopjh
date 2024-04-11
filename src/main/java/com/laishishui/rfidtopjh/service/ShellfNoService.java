@@ -9,9 +9,11 @@ import com.laishishui.rfidtopjh.common.ServerResponse;
  * @Date 2024-04-10 11:58
  */
 public interface ShellfNoService {
-    ServerResponse<String> autoUpdate(String primaryId,String libCode);
+    ServerResponse<String> initShelfNo();
 
-    ServerResponse<String> handUpdate(String primaryId,String libCode);
+    ServerResponse<String> autoUpdate();
+
+    ServerResponse<String> handUpdate(String barcode,String shelfNo);
 
 
 }

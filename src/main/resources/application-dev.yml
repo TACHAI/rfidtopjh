@@ -46,6 +46,28 @@ spring:
       default-auto-commit: true
     tomcat:
       max-active: 50
+#spring:
+#  datasource:
+#    oracle:
+#      driver-class-name: oracle.jdbc.driver.OracleDriver
+#      username: weiruan
+#      password: wr123456
+#      jdbc-url: jdbc:oracle:thin:@31.0.178.216:1521:swshare
+#    jpa:
+#      show-sql: true
+#    jackson:
+#      default-property-inclusion: non_null
+#spring:
+#  datasource:
+#    sqlserver:
+#      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#      username: weiruan
+#      password: wr@123456
+#      jdbc-url: jdbc:sqlserver://31.0.178.146:1433
+#    jpa:
+#      show-sql: true
+#    jackson:
+#      default-property-inclusion: non_null
   jpa:
     show-sql: true
   jackson:
@@ -67,7 +89,7 @@ logging:
 
 #原数据配置文件
 mybatis:
-  typeAliasesPackage: com.laishishui.sendmessage.bean.po
+  typeAliasesPackage: com.laishishui.rfidtopjh.bean.po
   mapper-locations: classpath:mappers/*.xml
 # 开启接口文档.生产关掉
 swagger:

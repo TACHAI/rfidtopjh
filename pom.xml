@@ -32,16 +32,31 @@
             <scope>runtime</scope>
         </dependency>
         <!--  多数据源处理-->
+        <!--oracle  驱动-->
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc8</artifactId>
-            <version></version>
+            <version>19.3.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.oracle.database.ha</groupId>
+                    <artifactId>simplefan</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.oracle.database.ha</groupId>
+                    <artifactId>ons</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+         <!--sqlserver q驱动-->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>sqljdbc4</artifactId>
-            <version>4.0</version>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.2.0.jre8</version>
+            <scope>test</scope>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>

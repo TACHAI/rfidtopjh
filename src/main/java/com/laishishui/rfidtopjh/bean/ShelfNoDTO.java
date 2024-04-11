@@ -3,14 +3,14 @@ package com.laishishui.rfidtopjh.bean;
 import lombok.Data;
 
 /**
- * @ClassName ShellNoDTO
+ * @ClassName ShelfNoDTO
  * @Author https://github.com/TACHAI
  * @Email tc1206966083@gmail.com
  * @Date 2024-04-10 12:19
  */
 
 @Data
-public class ShellNoDTO {
+public class ShelfNoDTO {
 
     // 排架号
     private String shelfNo;
