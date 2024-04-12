@@ -35,19 +35,28 @@ public class ShelfNoServiceImpl implements ShellfNoService {
     private static String CLIENTID;
     private static String CLIENTSECRET;
 
-    private static String NOURL="https://open.libsp.cn/shelf/updateShelfNo";
+    private static String CNTYPE;
+
+    private static String NOURL="https://open.libsp.cn/open/shelf/updateShelfNo";
+    private static String NOURL2="https://open.libsp.com/open/shelf/updateShelfNo";
 
     @Autowired
     private ShelfNoMapper shelfNoMapper;
 
+    @Value("${lsp.cntype}")
+    public void setCNTYPE(String cntype){
+        ShelfNoServiceImpl.CNTYPE=cntype;
+    }
+
+
     @Value("${lsp.primaryId}")
     public void setPRIMARYID(String primaryId){
-        ShelfNoServiceImpl.PRIMARYID=PRIMARYID;
+        ShelfNoServiceImpl.PRIMARYID=primaryId;
     }
 
     @Value("${lsp.libcode}")
     public void setLIBCODE(String libcode){
-        ShelfNoServiceImpl.LIBCODE=LIBCODE;
+        ShelfNoServiceImpl.LIBCODE=libcode;
     }
 
 
@@ -101,9 +110,13 @@ public class ShelfNoServiceImpl implements ShellfNoService {
     @Override
     public ServerResponse<String> handUpdate(String barcode, String shelfNo) {
         ShelfNoDTO dto = new ShelfNoDTO();
-        dto.setBarcode(barcode);
-        dto.setLibCode(LIBCODE);
         dto.setShelfNo(shelfNo);
+        dto.setLocationId("-1");
+        dto.setCircAttr("-1");
+        dto.setLibCode(LIBCODE);
+        dto.setBarOrProp(0);
+        dto.setBarcode(barcode);
+        dto.setPrimaryId(PRIMARYID);
         List<ShelfNoDTO> list = new ArrayList<>();
         list.add(dto);
         corePost(list);
@@ -127,13 +140,31 @@ public class ShelfNoServiceImpl implements ShellfNoService {
 
     //  post  发起更新排架号请求
     public void corePost(List<ShelfNoDTO> list){
-        // 获取token
-        String token =HttpUtil.getCnLibToken(CLIENTID,CLIENTSECRET).getData();
-        list.forEach(e->{
-            // 发起http 请求
-            HttpUtil.doLibPost(NOURL, JSONObject.toJSONString(e),token);
+        // 判断是发送 .com  域名，还是。cn域名
+        System.out.println("TYPE====="+CNTYPE);
+        if(StringUtils.equals(CNTYPE,"1")){
+            System.out.println("=====1====TYPE====="+CNTYPE);
 
-        });
+            // 获取token
+            String token = HttpUtil.getComLibToken(CLIENTID,CLIENTSECRET).getData();
+            list.forEach(e->{
+                // 发起http 请求
+                HttpUtil.doLibPost(NOURL2, JSONObject.toJSONString(e),token);
+
+            });
+        }else {
+            System.out.println("=====2====TYPE====="+CNTYPE);
+
+            // 获取token
+            String token = HttpUtil.getCnLibToken(CLIENTID,CLIENTSECRET).getData();
+            list.forEach(e->{
+                // 发起http 请求
+                HttpUtil.doLibPost(NOURL, JSONObject.toJSONString(e),token);
+
+            });
+        }
+
+
     }
 
     // po to dto
@@ -142,8 +173,12 @@ public class ShelfNoServiceImpl implements ShellfNoService {
         shelfNoList.forEach(e->{
             ShelfNoDTO dto = new ShelfNoDTO();
             dto.setShelfNo(e.getShellNo());
+            dto.setLocationId("-1");
+            dto.setCircAttr("-1");
             dto.setLibCode(LIBCODE);
+            dto.setBarOrProp(0);
             dto.setBarcode(e.getBarcode());
+            dto.setPrimaryId(PRIMARYID);
             list.add(dto);
         });
         return list;

@@ -230,7 +230,7 @@ public class HttpUtil {
             }
         }
         if(resoult!=null){
-            log.info("HttpUtil.doLibPost:url:{},resoult:{}",url,resoult);
+            log.info("HttpUtil.doLibPost:url:{},=====params:{}======resoult:{}",url,jsonStr,resoult);
             return  ServerResponse.createBySuccess(resoult,"请求成功"+url);
         }
         return ServerResponse.createByErrorMessage("获取失败"+url);
