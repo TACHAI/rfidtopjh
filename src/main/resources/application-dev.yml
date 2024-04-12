@@ -99,7 +99,7 @@ swagger:
 #  type =1  接口是.com  type=2  接口是.cn    primaryId   是工作人员账号 例如 tsgadmin
 lsp:
   cntype: 1
-  primaryId: tsgadmin
-  libCode: 20004900001
-  clientId: 519dadf6b24a4816b79d684c3489277c
-  clientSecret: d1dd716cd2fe49d3835d97fe6e01ea73
+  primaryId: 202401011
+  libCode: 20007845001
+  clientId: 519f6bdad24a4816b79d684c3489277c
+  clientSecret: d1dd716d3835d97fe6cd2fe49e01ea73
