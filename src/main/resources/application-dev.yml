@@ -5,7 +5,7 @@ spring:
       #      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
       driver-class-name: com.mysql.jdbc.Driver
       username: root
-      password: chaoxing
+      password: admin
       #      url: jdbc:mysql://120.131.6.144:3306/cultural_gallery?serverTimezone=UTC&characterEncoding=UTF-8
       #      url: jdbc:log4jdbc:mysql://127.0.0.1:3306/ovp?serverTimezone=GMT%2B8&characterEncoding=UTF-8
       url: jdbc:mysql://127.0.0.1:3306/shell_no?serverTimezone=GMT%2B8&characterEncoding=UTF-8
